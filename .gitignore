@@ -1,0 +1,23 @@
+# Build outputs
+*.bin
+*.elf
+*.map
+*.partitions.bin
+*.cpp.o
+*.cpp.d
+*.cpp.merged
+*.cpp.merged.libsdetect.d
+*.cache
+*.json
+
+# Arduino / local configuration
+secrets.h
+*.local.h
+
+# OS noise
+.DS_Store
+Thumbs.db
+
+# Optional exported reports and temporary artifacts
+*.docx
+*.zip
