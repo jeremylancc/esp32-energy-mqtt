@@ -498,15 +498,15 @@ void drawEnergyScreen() {
 
   display.setTextSize(1);
   // 圖示旁只微調英文字母位置，數值座標維持不變
-  display.setCursor(20, 16);
+  display.setCursor(14, 16);
   display.print("V");
-  display.setCursor(82, 16);
+  display.setCursor(76, 16);
   display.print("I");
-  display.setCursor(20, 34);
+  display.setCursor(14, 34);
   display.print("Hz");
-  display.setCursor(82, 34);
+  display.setCursor(76, 34);
   display.print("W");
-  display.setCursor(18, 52);
+  display.setCursor(12, 52);
   display.print("kWh");
 
   drawRightAligned(formatFloatOrDash(dataOk, lastV, 1) + "V", 58, 23, 1);
