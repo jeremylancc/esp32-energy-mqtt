@@ -20,4 +20,5 @@ Thumbs.db
 
 # Optional exported reports and temporary artifacts
 *.docx
+!docs/*.docx
 *.zip
