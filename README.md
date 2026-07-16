@@ -44,6 +44,8 @@ ESP32-MQTT-Energy-Meter/
 │  ├─ WIN_20260716_13_29_21_Pro.jpg
 │  └─ 747941411_1286448426694019_3807202194689559046_n.jpg
 └─ docs/
+   ├─ 結案報告.docx
+   └─ 結案報告_含流程圖.docx
 ```
 
 ## 主要程式
@@ -123,6 +125,21 @@ ESP32-MQTT-Energy-Meter/
 4. 選擇你的 ESP32 板型與序列埠
 5. 編譯並燒錄
 
+### `secrets.h` 範例
+
+```cpp
+#pragma once
+
+#define SECRET_WIFI_SSID "your-ssid"
+#define SECRET_WIFI_PASSWORD "your-password"
+#define SECRET_MQTT_HOST "mqttgo.io"
+#define SECRET_MQTT_PORT 1883
+#define SECRET_MQTT_USERNAME "your-user"
+#define SECRET_MQTT_PASSWORD "your-password"
+#define SECRET_MQTT_TOPIC "your/topic/data"
+#define SECRET_MQTT_CTRL_TOPIC "your/topic/ctrl"
+```
+
 ## 建議開發工具
 
 - Arduino IDE
@@ -145,6 +162,7 @@ ESP32-MQTT-Energy-Meter/
 - `secrets.h` 不要提交到 GitHub
 - 如果更換 OLED 尺寸、模組腳位或感測器型號，需要同步調整程式中的座標與設定
 - 若要公開 repo，建議再次檢查是否還有任何帳密或私人資訊
+- `docs/` 內含本次專案的結案報告 Word 檔，可直接作為成果文件
 
 ## 專案狀態
 
