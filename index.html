@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="ESP32 MQTT Energy Meter project site" />
+  <title>ESP32 MQTT Energy Meter</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+TC:wght@400;500;700;900&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="bg-orb orb-a"></div>
+  <div class="bg-orb orb-b"></div>
+  <div class="bg-grid"></div>
+
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-mark">E</div>
+      <div>
+        <div class="brand-name">ESP32 MQTT Energy Meter</div>
+        <div class="brand-subtitle">智慧電表、環境監測、即時影像與 Node-RED 儀表板</div>
+      </div>
+    </div>
+    <nav class="nav">
+      <a href="#features">功能</a>
+      <a href="#architecture">架構</a>
+      <a href="#hardware">硬體</a>
+      <a href="#setup">設定</a>
+      <a href="#docs">文件</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <div class="eyebrow">GitHub Pages Showcase</div>
+        <h1>把 ESP32 專案做成一個可展示的網站。</h1>
+        <p>
+          這個網站展示本專案的最終成果：ESP32 感測整合、MQTT 雙向通訊、
+          OLED 三頁式介面、Node-RED 流程與儀表板，以及結案報告與實體成品。
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#docs">查看文件</a>
+          <a class="btn btn-secondary" href="README.md">閱讀程式說明</a>
+        </div>
+
+        <div class="hero-stats">
+          <div class="stat">
+            <div class="stat-value">ESP32</div>
+            <div class="stat-label">主控核心</div>
+          </div>
+          <div class="stat">
+            <div class="stat-value">MQTT</div>
+            <div class="stat-label">上傳與控制</div>
+          </div>
+          <div class="stat">
+            <div class="stat-value">OLED</div>
+            <div class="stat-label">三頁式顯示</div>
+          </div>
+          <div class="stat">
+            <div class="stat-value">NTP</div>
+            <div class="stat-label">台北時間同步</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-panel">
+        <div class="panel-card panel-card-large">
+          <div class="panel-chip">System Overview</div>
+          <h2>即時顯示、遠端上傳、雲端控制</h2>
+          <p>從感測器到雲端，再回到控制端，形成完整的資料流。</p>
+          <div class="pulse-row">
+            <span class="pulse">V</span>
+            <span class="pulse">I</span>
+            <span class="pulse">W</span>
+            <span class="pulse">kWh</span>
+            <span class="pulse">Temp</span>
+            <span class="pulse">Humi</span>
+          </div>
+        </div>
+        <div class="panel-grid">
+          <div class="panel-card">
+            <div class="panel-label">資料上傳</div>
+            <div class="panel-value">jeremy/class701/data</div>
+          </div>
+          <div class="panel-card">
+            <div class="panel-label">控制主題</div>
+            <div class="panel-value">jeremy/class701/ctrl</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="features" class="section">
+      <div class="section-heading">
+        <div class="eyebrow">Highlights</div>
+        <h2>專案功能亮點</h2>
+      </div>
+      <div class="cards four-up">
+        <article class="feature-card">
+          <div class="icon-chip">01</div>
+          <h3>智慧電表</h3>
+          <p>整合 PZEM-004T，讀取電壓、電流、功率、累積度數與功率因子。</p>
+        </article>
+        <article class="feature-card">
+          <div class="icon-chip">02</div>
+          <h3>環境監測</h3>
+          <p>讀取 DHT11 與光敏電阻，顯示溫濕度與亮度，並同步送往雲端。</p>
+        </article>
+        <article class="feature-card">
+          <div class="icon-chip">03</div>
+          <h3>遠端控制</h3>
+          <p>透過 MQTT 訂閱命令控制繼電器與 SG90，支援 callback 即時處理。</p>
+        </article>
+        <article class="feature-card">
+          <div class="icon-chip">04</div>
+          <h3>OLED 介面</h3>
+          <p>三頁輪播，包含用電資訊、環境資訊與系統狀態，畫面更易讀。</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="architecture" class="section">
+      <div class="section-heading">
+        <div class="eyebrow">Architecture</div>
+        <h2>系統架構與資料流</h2>
+      </div>
+      <div class="diagram-grid">
+        <figure class="diagram-card">
+          <img src="assets/node_red_flow.png" alt="Node-RED 流程圖">
+          <figcaption>Node-RED 流程圖</figcaption>
+        </figure>
+        <figure class="diagram-card">
+          <img src="assets/mqtt_flow.png" alt="MQTT 資料流向圖">
+          <figcaption>MQTT 資料流向圖</figcaption>
+        </figure>
+        <figure class="diagram-card">
+          <img src="assets/dashboard_layout.png" alt="儀表板版面架構圖">
+          <figcaption>儀表板版面架構圖</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section id="hardware" class="section">
+      <div class="section-heading">
+        <div class="eyebrow">Hardware</div>
+        <h2>實體整合展示</h2>
+      </div>
+      <div class="gallery">
+        <figure class="gallery-card tall">
+          <img src="assets/WIN_20260716_13_29_21_Pro.jpg" alt="OLED 用電資訊實體畫面">
+          <figcaption>智慧電表頁面展示</figcaption>
+        </figure>
+        <figure class="gallery-card tall">
+          <img src="assets/WIN_20260716_13_28_54_Pro.jpg" alt="OLED 環境資訊實體畫面">
+          <figcaption>環境監測頁面展示</figcaption>
+        </figure>
+        <figure class="gallery-card">
+          <img src="assets/747941411_1286448426694019_3807202194689559046_n.jpg" alt="ESP32 與感測模組整合">
+          <figcaption>ESP32 與感測模組整合</figcaption>
+        </figure>
+        <figure class="gallery-card">
+          <img src="assets/4.png" alt="MQTT 連線與訂閱畫面">
+          <figcaption>MQTT 連線與訂閱畫面</figcaption>
+        </figure>
+        <figure class="gallery-card">
+          <img src="assets/3.png" alt="控制與圖表整合畫面">
+          <figcaption>控制與圖表整合畫面</figcaption>
+        </figure>
+        <figure class="gallery-card">
+          <img src="assets/2.png" alt="環境監測儀表板">
+          <figcaption>環境監測儀表板</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section id="setup" class="section">
+      <div class="section-heading">
+        <div class="eyebrow">Setup</div>
+        <h2>如何開始使用</h2>
+      </div>
+      <div class="setup-grid">
+        <div class="setup-card">
+          <h3>1. 設定密碼</h3>
+          <p>複製 <code>sketch/secrets.example.h</code> 為 <code>sketch/secrets.h</code>，填入 Wi-Fi 與 MQTT 設定。</p>
+        </div>
+        <div class="setup-card">
+          <h3>2. 燒錄程式</h3>
+          <p>使用 Arduino IDE 或 Arduino CLI 開啟 <code>sketch/20_oled_show.ino</code>，選擇 ESP32 板型後上傳。</p>
+        </div>
+        <div class="setup-card">
+          <h3>3. 開啟 Pages</h3>
+          <p>GitHub Pages 以同一個 repo 提供靜態網站，這個首頁已準備好可直接發布。</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="docs" class="section docs">
+      <div class="section-heading">
+        <div class="eyebrow">Documents</div>
+        <h2>文件與成果</h2>
+      </div>
+      <div class="docs-grid">
+        <a class="doc-link" href="docs/結案報告.docx">結案報告.docx</a>
+        <a class="doc-link" href="docs/結案報告_含流程圖.docx">結案報告_含流程圖.docx</a>
+        <a class="doc-link" href="README.md">README.md</a>
+        <a class="doc-link" href="LICENSE">LICENSE</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div>
+      <strong>ESP32 MQTT Energy Meter</strong>
+      <span>・ A static showcase site for the same repository</span>
+    </div>
+    <div id="year"></div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
