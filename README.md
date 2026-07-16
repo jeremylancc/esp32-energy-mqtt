@@ -24,6 +24,15 @@
 
 首頁會整合專案簡介、架構圖、實體照片與文件連結，適合拿來做成果展示。
 
+### GitHub Pages 啟用方式
+
+在 repo 的 `Settings > Pages` 中，把來源設定成：
+
+- `Build and deployment`
+- `Source: GitHub Actions`
+
+之後每次推送到 `main`，網站都會自動重新部署。
+
 ## 專案特色
 
 - 即時顯示用電資訊、環境資訊與系統狀態
