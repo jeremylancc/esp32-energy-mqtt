@@ -497,16 +497,16 @@ void drawEnergyScreen() {
   drawClockIconMini(6, 52);
 
   display.setTextSize(1);
-  display.setCursor(24, 16);
+  // 圖示旁只微調英文字母位置，數值座標維持不變
+  display.setCursor(20, 16);
   display.print("V");
-  display.setCursor(86, 16);
+  display.setCursor(82, 16);
   display.print("I");
-  // 第一、二列統一內縮規則，保留圖示與文字間距
-  display.setCursor(24, 34);
+  display.setCursor(20, 34);
   display.print("Hz");
-  display.setCursor(86, 34);
+  display.setCursor(82, 34);
   display.print("W");
-  display.setCursor(20, 52);
+  display.setCursor(18, 52);
   display.print("kWh");
 
   drawRightAligned(formatFloatOrDash(dataOk, lastV, 1) + "V", 58, 23, 1);
