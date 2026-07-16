@@ -6,7 +6,12 @@
 #include <ESP32_Servo.h>
 #include <DHTesp.h>
 #include <time.h>
+
+#if __has_include("secrets.h")
 #include "secrets.h"
+#else
+#include "secrets.example.h"
+#endif
 
 #define SCREEN_WIDTH 128
 #define SCREEN_HEIGHT 64

@@ -1,0 +1,38 @@
+name: Arduino Compile
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  compile:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Install Arduino CLI
+        uses: arduino/setup-arduino-cli@v2
+
+      - name: Update board index
+        run: arduino-cli core update-index
+
+      - name: Install ESP32 core
+        run: arduino-cli core install esp32:esp32
+
+      - name: Install libraries
+        run: |
+          arduino-cli lib install "Adafruit SSD1306"
+          arduino-cli lib install "Adafruit GFX Library"
+          arduino-cli lib install "PubSubClient"
+          arduino-cli lib install "DHTesp"
+          arduino-cli lib install "ESP32Servo"
+
+      - name: Compile sketch
+        run: |
+          arduino-cli compile \
+            --fqbn esp32:esp32:esp32 \
+            ./sketch/20_oled_show.ino
